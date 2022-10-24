@@ -34,11 +34,10 @@ jobs:
           reporter: java-junit
           fail-on-error: true
       
-      - name: Setup Code Climate   
-        uses: amancevice/setup-code-climate@v0
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.5.7
+        env:
+         cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
-       
-
-
-
+          coverageCommand: npm run coverage
+          debug: true
