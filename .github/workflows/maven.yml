@@ -35,11 +35,10 @@ jobs:
           fail-on-error: true
       
       - name: Setup Code Climate   
-      - uses: amancevice/setup-code-climate@v0
+        uses: amancevice/setup-code-climate@v0
         with:
           cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
-      - run: cc-test-reporter before-build
-      # ...
-      - run: cc-test-reporter after-build
+       
+
 
 
