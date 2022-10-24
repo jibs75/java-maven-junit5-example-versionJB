@@ -19,7 +19,7 @@ jobs:
         run: mvn test
 
       - name: Test Report
-        uses: mikepenz/action-junit-report@v3
+        uses: dorny/test-reporter@v1
         if: always() # always run even if the previous step fails
         with:
           report_paths: './target/surefire-reports/TEST-*.xml'
