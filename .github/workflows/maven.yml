@@ -39,5 +39,5 @@ jobs:
         env:
          cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: npm run coverage
+          coverageCommand: mvn test
           debug: true
