@@ -89,22 +89,22 @@ public class TranslationEngineDynamicTest {
         return dynamicTests;
     }
 
-    // 返回 Stream 流
-    // @Disabled
-    @TestFactory
-    public Stream<DynamicTest> translateDynamicTestsFromStream() {
+    // // 返回 Stream 流
+    // // @Disabled
+    // @TestFactory
+    // public Stream<DynamicTest> translateDynamicTestsFromStream() {
 
-        // set all test action to cover 100%
-        List<String> inPhrases =
-                new ArrayList<>(Arrays.asList("Hello", "Yes", "No", "Goodbye", "Good night", "Thank you", "Other", " "));
-        List<String> outPhrases =
-                new ArrayList<>(Arrays.asList("你好", "是", "否", "再见", "晚安", "谢谢", "Not found", null));
+    //     // set all test action to cover 100%
+    //     List<String> inPhrases =
+    //             new ArrayList<>(Arrays.asList("Hello", "Yes", "No", "Goodbye", "Good night", "Thank you", "Other", " "));
+    //     List<String> outPhrases =
+    //             new ArrayList<>(Arrays.asList("你好", "是", "否", "再见", "晚安", "谢谢", "Not found", null));
 
-        return inPhrases.stream().map(phrs -> DynamicTest.dynamicTest("Test translate " + phrs, () -> {
-            int idx = inPhrases.indexOf(phrs);
-            assertEquals(outPhrases.get(idx), translatorEngine.tranlate(phrs));
-        }));
-    }
+    //     return inPhrases.stream().map(phrs -> DynamicTest.dynamicTest("Test translate " + phrs, () -> {
+    //         int idx = inPhrases.indexOf(phrs);
+    //         assertEquals(outPhrases.get(idx), translatorEngine.tranlate(phrs));
+    //     }));
+    // }
 
     // 返回 Iterable 迭代器
     // @TestFactory
