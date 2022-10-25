@@ -34,10 +34,17 @@ jobs:
           reporter: java-junit
           fail-on-error: true
       
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.5.7
-        env:
-         cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
+      # - name: Test & publish code coverage
+      #   uses: paambaati/codeclimate-action@v2.5.7
+      #   env:
+      #    cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
+      #   with:
+      #     coverageCommand: mvn test
+      #     debug: true
+      - name: Generate Coverage Report
+        run: mvn clean verify
+      - name: Archive Jacoco reports
+        uses: actions/upload-artifact@v3
         with:
-          coverageCommand: mvn test
-          debug: true
+          name: jacoco-reports
+          path: test-coverage/target/site/jacoco-aggregate
