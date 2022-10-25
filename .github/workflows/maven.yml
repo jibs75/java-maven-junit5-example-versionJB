@@ -43,7 +43,9 @@ jobs:
       #     debug: true
       - name: Generate Coverage Report
         # run: mvn clean verify
-        run: ls -la ./target
+        run: |
+          mvn clean verify
+          ls -la ./target
       - name: Archive Jacoco reports
         uses: actions/upload-artifact@v3
         with:
