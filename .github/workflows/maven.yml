@@ -22,32 +22,32 @@ jobs:
       - name: Build
         run: mvn --batch-mode -DskipTests package
 
-      - name: Test
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      # - name: Test
+      #   run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 
-      - name: Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Maven Tests
-          path: target/surefire-reports/*.xml
-          reporter: java-junit
-          fail-on-error: true
-      
-      # - name: Test & publish code coverage
-      #   uses: paambaati/codeclimate-action@v2.5.7
-      #   env:
-      #    cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
+      # - name: Report
+      #   uses: dorny/test-reporter@v1
+      #   if: always()
       #   with:
-      #     coverageCommand: mvn test
-      #     debug: true
-      - name: Generate Coverage Report
-        # run: mvn clean test
-        run: |
-          mvn clean test -e
-          ls -la ./target
-      - name: Archive Jacoco reports
-        uses: actions/upload-artifact@v3
+      #     name: Maven Tests
+      #     path: target/surefire-reports/*.xml
+      #     reporter: java-junit
+      #     fail-on-error: true
+      
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.5.7
+        env:
+         cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          name: jacoco-reports
-          path: target/jacoco-report/jacoco.xml
+          coverageCommand: mvn test
+          debug: true
+
+      # - name: Generate Coverage Report
+      #   run: |
+      #     mvn clean test -e
+      #     ls -la ./target
+      # - name: Archive Jacoco reports
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: jacoco-reports
+      #     path: target/jacoco-report/jacoco.xml
