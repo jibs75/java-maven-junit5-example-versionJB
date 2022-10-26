@@ -42,7 +42,7 @@ jobs:
       #     coverageCommand: mvn test
       #     debug: true
       - name: Generate Coverage Report
-        # run: mvn clean verify
+        # run: mvn clean test
         run: |
           mvn clean verify
           ls -la ./target
