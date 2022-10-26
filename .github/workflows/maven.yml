@@ -50,4 +50,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: jacoco-reports
-          path: target/site/jacoco/*
+          path: target/jacoco-report/jacoco.xml
